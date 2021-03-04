@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+.main-game {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.shower {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    margin-top: 150px;
+    font-size: 96px;
+    color: #fff;
+}
+
+.shower img {
+    width: 50px;
+    height: 50px;
+}
+
+.btn {
+    width: 109px;
+    height: 109px;
+    background-color: transparent;
+    color: #99A8B2;    
+    outline: none;
+    font-size: 64px;
+    border: none;
+}
+
+.btn:hover{
+	background-color: #1F6F8B;
+	color: #fff;
+    outline: none;
+    transition:0.2s;
+}
+
+.b-bottom {
+    border-bottom: 2px solid #1F6F8B;
+}
+
+.b-right {
+    border-right: 2px solid #1F6F8B;
+}
+
+.wrapper {
+    border: 2px solid #1F6F8B;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+.hide {
+    display: none;
+}
