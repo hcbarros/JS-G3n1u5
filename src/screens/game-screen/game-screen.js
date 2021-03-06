@@ -61,10 +61,11 @@ export default function GameScreen () {
         useEffect(() => {                   
              
             setShowNumber(x => !x);
+            const time = count == 0 ? 0 : 300;
 
-            const time = setTimeout(() => {    
+            const timeout = setTimeout(() => {    
 
-                if((time != 1) && showNumber && (count < numbers.length)) {                                        
+                if((timeout != 1) && showNumber && (count < numbers.length)) {                                        
                     setNumber(numbers[count]);
                     setCount(x => x + 1);               
                 }
@@ -72,11 +73,11 @@ export default function GameScreen () {
                     setShowNumber(false);
                     setCount(0);
                 }
-                if(time != 1 && count < numbers.length) setchangeNumber(!changeNumber);                
+                if(timeout != 1 && count < numbers.length) setchangeNumber(!changeNumber);                
                 
-            }, count == 0 ? 0 : 300);    
+            }, time);    
 
-            if(time == 1) getLoader(1000, true);                       
+            if(timeout == 1) getLoader(1000, true);                       
              
         },[changeNumber]);
 

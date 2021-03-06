@@ -34,6 +34,19 @@
     outline: none;
     font-size: 64px;
     border: none;
+    cursor: pointer;
+    position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn:active {
+   font-size: 80px;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+   background-clip: #fff;
+  -webkit-text-fill-color: transparent;	
 }
 
 .btn:hover{
