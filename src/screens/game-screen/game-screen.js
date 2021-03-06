@@ -82,27 +82,20 @@ export default function GameScreen () {
         },[changeNumber]);
 
 
-
         return (
 
             <div className="main-game">           
 
                 <div className="shower">
                     <img className={!showLoader ? "hide" : ""} src={loader} alt="image loader" />
-                    {showNumber ? number : null} 
-                        
+                    {showNumber ? number : null}                         
                 </div>
 
                 <div className="wrapper">
-                    <button className="btn b-right b-bottom" onClick={() => checkButton(1)}>1</button>
-                    <button className="btn b-right b-bottom" onClick={() => checkButton(2)}>2</button>
-                    <button className="btn b-bottom" onClick={() => checkButton(3)}>3</button>
-                    <button className="btn b-right b-bottom" onClick={() => checkButton(4)}>4</button>
-                    <button className="btn b-right b-bottom" onClick={() => checkButton(5)}>5</button>
-                    <button className="btn b-bottom" onClick={() => checkButton(6)}>6</button>
-                    <button className="btn b-right" onClick={() => checkButton(7)}>7</button>
-                    <button className="btn b-right" onClick={() => checkButton(8)}>8</button>
-                    <button className="btn" onClick={() => checkButton(9)}>9</button>
+                    {[1,2,3,4,5,6,7,8,9].map((x) => 
+                        <button disabled={showNumber || showLoader} className="btn" 
+                        onClick={() => checkButton(x)}>{x}</button>
+                    )}
                 </div>                
 
             </div>
