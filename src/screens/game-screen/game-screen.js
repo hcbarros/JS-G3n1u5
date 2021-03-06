@@ -10,75 +10,73 @@ export default function GameScreen () {
         const [redirect, setRedirect] = useState(false);
         const [numbers, setNumbers] = useState([]);
         const [number, setNumber] = useState(0);
-        const [showNumber, setShowNumber] = useState(true);
+        const [showNumber, setShowNumber] = useState(false);
         const [showLoader, setShowLoader] = useState(false);
         const [count, setCount] = useState(0);
         const [changeNumber, setchangeNumber] = useState(false);
 
 
         const checkButton = (n) => {
+
+            if(numbers[count] != n) {
+
+                alert("Voce perdeu o jogo!")
+                //GAME OVER
+            }
+
+            else if((count+1) >= numbers.length) {
                 
-            setNumbers([1,2,3,4,5,6,7])
-            setchangeNumber(true);
-            
-            // if(count >= numbers.length) {
-            //     let sort = Math.floor(Math.random() * 9 + 1);
-            //     numbers.push(sort);
-            //     setNumbers(numbers);
-                
-            //     setNumber(sort);          
-            //     setCount(0);   
-            // }
+                getLoader(1000,false)
+            }           
 
-            // else if(numbers[count] != n) {
-
-            //     //GAME OVER
-            // }
-
-            // else setCount(count+1);
+            else setCount(count+1);
         }
   
 
         const sortNumber = () => {
             const sort = Math.floor(Math.random() * 9 + 1);
             numbers.push(sort);
-            setNumbers(numbers);
-            setNumber(sort);          
+            setNumbers(numbers);     
             setCount(0);
         }
 
         const getLoader = (time, show) => {            
            
             new Promise((res,rej) => {
-                sortNumber();            
+                sortNumber();       
+                setShowNumber(false);     
                 setShowLoader(true);
-                setTimeout(() => res(setShowLoader(false)), time);                
+                setTimeout(() => res(setShowLoader(false)), time);                                
             })
             .then(() => {
-                if(!show) return;
-                setShowNumber(true);
-                setTimeout(() => setShowNumber(false), 300)
+                setNumber(numbers[0]);
+                if(!show) setchangeNumber(!changeNumber);
+                else {                                        
+                    setShowNumber(true);
+                    setTimeout(() => setShowNumber(false), 300);
+                }
             });              
         }
 
-        useEffect(() => {           
-
+        useEffect(() => {                   
+             
             setShowNumber(x => !x);
 
             const time = setTimeout(() => {    
 
-                if(time > 1 && showNumber) {                                                         
-                    setNumber(x => numbers[count])
-                    if(count < numbers.length + 1) {
-                        setCount(x => x + 1)                                                                       
-                    }                                                
+                if((time != 1) && showNumber && (count < numbers.length)) {                                        
+                    setNumber(numbers[count]);
+                    setCount(x => x + 1);               
                 }
-                if(time > 1) setchangeNumber(x => !x);
-                else setShowNumber(false);
+                if(count >= numbers.length) {
+                    setShowNumber(false);
+                    setCount(0);
+                }
+                if(time != 1 && count < numbers.length) setchangeNumber(!changeNumber);                
                 
-            }, 300);    
+            }, count == 0 ? 0 : 300);    
 
-            if(time == 1) getLoader(1000, false);            
+            if(time == 1) getLoader(1000, true);                       
              
         },[changeNumber]);
 
