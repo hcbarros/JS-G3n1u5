@@ -102,7 +102,7 @@ export default function GameScreen () {
                 
                 <div>
                     <div className={gameOver ? "game-over" : "hide"}>
-                        <a>Fim de jogo!!</a>
+                        <a>Fim de jogo!</a>
                         <img className={showLoader ? "loader" : "hide"} src={loader} alt="image loader" />  
                     </div> 
                 </div>                                        

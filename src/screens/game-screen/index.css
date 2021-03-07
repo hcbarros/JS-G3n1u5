@@ -16,7 +16,7 @@
     width: 150px;
     border: 2px solid #fff;
     border-radius: 4px;
-    margin-top: 150px;
+    margin-top: 10vh;
     font-size: 96px;
     color: #fff;
 }
@@ -28,7 +28,7 @@
 
 .wrapper {
     border: 2px solid #1F6F8B;
-    margin-top: 50px;
+    margin: 50px 20px 20px 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
  }
@@ -91,7 +91,7 @@
     display: flex;    
     align-items: center;
     flex-direction: column;
-    margin-top: 150px;
+    margin-top: 20vh;
     font-family: 'Roboto', sans-serif;    
     font-size: 90px;    
     animation: fadein 2s;
@@ -123,3 +123,19 @@
     60% { opacity: 0.6; }
 }
   
+
+@media (max-width: 400px) {
+    .btn {
+      width: 30vw;
+      height: 30vw;
+    }
+    .game-over {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 550px) {
+    .game-over {
+        font-size: 16.3vw;
+    }
+}
