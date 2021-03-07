@@ -83,5 +83,43 @@
     display: none;
 }
 
-  
+.main-game div:nth-child(1) {
+    color: #fff;
+}
 
+.game-over {          
+    display: flex;    
+    align-items: center;
+    flex-direction: column;
+    margin-top: 150px;
+    font-family: 'Roboto', sans-serif;    
+    font-size: 90px;    
+    animation: fadein 2s;
+    -webkit-animation: fadeIn 1.5s ease-in-out;
+    -moz-animation: fadeIn 1.5s ease-in-out;
+    -o-animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.loader {    
+    width: 80px;    
+    margin-top: 150px;
+}
+
+@-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    60% { opacity: 0.6; } 
+    }
+    @-moz-keyframes fadeIn {
+    0% { opacity: 0;}
+    60% { opacity: 0.6; }
+    }
+    @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    60% { opacity: 0.6; }
+    }
+    @keyframes fadeIn {
+    0% { opacity: 0; }
+    60% { opacity: 0.6; }
+}
+  
