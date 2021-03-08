@@ -1,0 +1,131 @@
+
+.main-over {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: center;
+
+}
+
+.main-over img {
+    margin: 30px 100px 0px 100vw;
+}
+
+.end-game-text {
+    font-size: 48px;
+    margin-top: calc(30px + 2%);
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.score-text {
+    margin-top: calc(35px + 8%);
+}
+
+.score-value {
+    font-size: 96px;
+}
+
+input {
+    background-color: transparent;
+    width: 320px;
+    height: 80px;
+    margin-top: calc(5px + 2%);
+    font-family: 'Roboto', sans-serif;     
+    font-size: 24px;
+    line-height: 28.13px;
+    border: 3px solid #1F6F8B;
+    box-sizing: border-box;
+    color: #fff;
+    padding-left: 15px;
+    border-radius: 10px;
+    outline: none;
+}
+ 
+input::placeholder {
+    color: #99A8B2;
+}
+
+.main-over button {
+    background-color: #1F6F8B;
+    width: 320px;
+    height: 80px;
+    margin-top: 3vh;
+    font-family: 'Roboto', sans-serif;     
+    font-size: 24px;
+    line-height: 28.13px;
+    border: 3px solid #99A8B2;
+    text-align: center;
+    color: #E6D5B8;    
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btnClose {
+    cursor: pointer;
+}
+
+.animation {          
+    animation: fadein 2s;
+    -webkit-animation: fadeIn 1.5s ease-in-out;
+    -moz-animation: fadeIn 1.5s ease-in-out;
+    -o-animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hideScreen {
+    animation-name: goScreen;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;    
+  }
+
+.loader {    
+    background-image: url('../../images/loader.webp');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    margin-top: 10%;
+    margin-left: 30px;
+    background-size: 60px 60px;
+}
+
+@-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    60% { opacity: 1; } 
+    }
+    @-moz-keyframes fadeIn {
+    0% { opacity: 0;}
+    60% { opacity: 1; }
+    }
+    @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    60% { opacity: 1; }
+    }
+    @keyframes fadeIn {
+    0% { opacity: 0; }
+    60% { opacity: 1; }
+}
+
+@keyframes goScreen {
+    from {
+      margin-top: 0;
+    }
+    to {
+        margin-top: 100vh;
+    }
+  }
+
+
+@media (max-width: 400px) {
+    .main-over button, input {
+      width: 80%;
+    }
+    .main-over img {
+        margin: 7.6% 25% 0px 100vw;    
+    }
+    .end-game-text {
+        font-size:calc(15px + 8.3vw);
+    }
+}
