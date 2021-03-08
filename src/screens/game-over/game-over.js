@@ -28,15 +28,15 @@ export default function GameOver() {
             setLoad(true);
 
             axios.post("https://us-central1-prova-front-letras.cloudfunctions.net/save", {
-                name: input.current.value,
-                score: points
-            })
-            .then((resp) => {
-                setGoScore(true);
-            })
-            .catch((err) => {
-                  console.log(`Error in post request: ${err}`);
-            });            
+                    name: input.current.value,
+                    score: points
+                 })
+                 .then((resp) => {
+                    setGoScore(true);
+                 })
+                 .catch((err) => {
+                    console.log(`Error in post request: ${err}`);
+                 });            
         }
 
         const buttonClose = () => {        

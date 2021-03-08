@@ -35,6 +35,10 @@
     border-radius: 10px;
 }
 
+.img-ranking {
+    cursor: pointer;
+}
+
 @keyframes showScreen {
     from {
       opacity: 0;

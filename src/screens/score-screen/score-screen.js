@@ -3,25 +3,27 @@ import './index.css';
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
-import logo from '../../images/logo.svg';
 import arrow from '../../images/arrow.svg';
 import loader from '../../images/loader.webp';
 
 
 export default function ScoreScreen() {
     
-        const [redirect, setRedirect] = useState(false);
         const [init, setInit] = useState(true);
         const [scores, setScores] = useState([]);
         const [loaded, setLoaded] = useState(false);
+        const [hideScreen, setHideScreen] = useState(false);
+        const [goHome, setGoHome] = useState(false);
 
+
+        const buttonReturn = () => setGoHome(true);  
+        
 
         useEffect(() => {   
             
                 axios.get("https://us-central1-prova-front-letras.cloudfunctions.net/ranking")
-                .then((resp) => {
-                    resp.data.map((score) => scores.push(score));                  
-                    setScores(scores);
+                .then((resp) => {                  
+                    setScores(resp.data);
                     setLoaded(true);
                 })
                 .catch((err) => {
@@ -33,11 +35,14 @@ export default function ScoreScreen() {
 
         return (
 
-            <div className="main-score">           
+            <div className="main-score">        
+
+                {goHome && <Redirect to="/" />}     
 
                 <div className="header-ranking">
 
-                    <img className="arrow-icon" src={arrow} alt="Arrow icon" />
+                    <img className="arrow-icon" 
+                         onClick={buttonReturn} src={arrow} alt="Arrow icon" />
                 
                     <a className="ranking">Ranking</a>
 

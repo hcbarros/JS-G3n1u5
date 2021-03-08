@@ -8,19 +8,23 @@ import ranking from '../../images/ranking.svg';
 
 const Home = () => {
     
-        const [redirect, setRedirect] = useState(false);
+        const [goToGame, setGoToGame] = useState(false);
+        const [goToScore, setGoToScore] = useState(false);
 
         return (
 
             <div className="main-home">           
 
-                {redirect && <Redirect to="/game-screen" />}
+                {goToGame && <Redirect to="/game-screen" />}
 
-                <img src={ranking} alt="ranking image" />
+                {goToScore && <Redirect to="/score" />}
+
+                <img className="img-ranking" src={ranking} alt="ranking image" 
+                     onClick={() => setGoToScore(true)} />
 
                 <img src={logo} alt="Logo image" />
 
-                <button onClick={() => setRedirect(true)} >Iniciar Jogo</button>
+                <button onClick={() => setGoToGame(true)} >Iniciar Jogo</button>
 
             </div>
         );

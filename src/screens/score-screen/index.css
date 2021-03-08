@@ -15,6 +15,7 @@
 
 .arrow-icon {
     margin-left: 30px;   
+    cursor: pointer;
 }
 
 .loader-ranking {
@@ -37,7 +38,7 @@
     justify-content: space-between;
     margin: 0px 50px 15px 50px;
     color: #99A8B2;
-    size: 24px;
+    font-size: 24px;
 }
 
 .score span:nth-child(1) {
@@ -47,3 +48,7 @@
 .score span:nth-child(1) span:nth-child(2) {
     margin-left: 6vw;
 }
+
+
+
+  
