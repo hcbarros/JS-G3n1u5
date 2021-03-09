@@ -48,6 +48,11 @@ input::placeholder {
     color: #99A8B2;
 }
 
+.alert::placeholder {
+    color: red;
+    font-size: 30px;
+}
+
 .main-over button {
     background-color: #1F6F8B;
     width: 320px;

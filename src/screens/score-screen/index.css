@@ -10,7 +10,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
     color: #E6D5B8;
-    margin-right: 70px;
+    margin-right: 50px;
 }
 
 .arrow-icon {
@@ -21,11 +21,11 @@
 .loader-ranking {
     display: flex;
     justify-content: center;    
-    margin-top: 200px;
+    margin-top: 30vh;
 }
 
 .loader-ranking img {
-    width: 60px;
+    width: 50px;
 }
 
 .hide {
@@ -36,7 +36,7 @@
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: space-between;
-    margin: 0px 50px 15px 50px;
+    margin: 0px 50px 20px 50px;
     color: #99A8B2;
     font-size: 24px;
 }
@@ -49,6 +49,28 @@
     margin-left: 6vw;
 }
 
+.hide-score {
+    animation-name: goBack;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;    
+}
 
-
+@keyframes goBack {
+    from {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    to {
+      margin-left: -100%;
+      margin-right: 100%;
+    }
+  }
   
+  @media (max-width: 600px) {
+    .score {
+        margin: 0px 8.6% 20px 8.6%;
+    }
+    .header-ranking {
+        margin-bottom: 17.1%;       
+    }
+}

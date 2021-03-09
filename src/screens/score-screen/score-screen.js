@@ -3,6 +3,7 @@ import './index.css';
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+import Sounds from '../../sounds/sounds';
 import arrow from '../../images/arrow.svg';
 import loader from '../../images/loader.webp';
 
@@ -16,8 +17,11 @@ export default function ScoreScreen() {
         const [goHome, setGoHome] = useState(false);
 
 
-        const buttonReturn = () => setGoHome(true);  
-        
+        const buttonReturn = () => {
+         
+            setHideScreen(true);
+            setTimeout(() => setGoHome(true), 700);
+        }  
 
         useEffect(() => {   
             
@@ -26,23 +30,24 @@ export default function ScoreScreen() {
                     setScores(resp.data);
                     setLoaded(true);
                 })
-                .catch((err) => {
-                    alert(JSON.stringify(err))
-                });                
+                .catch((err) => console.log(`Error in get request: ${err}`));                
                                                         
         },[init]);
 
 
         return (
 
-            <div className="main-score">        
+            <div className={hideScreen ? "main-score hide-score" : "main-score"}>        
 
                 {goHome && <Redirect to="/" />}     
 
                 <div className="header-ranking">
 
                     <img className="arrow-icon" 
-                         onClick={buttonReturn} src={arrow} alt="Arrow icon" />
+                         onClick={() => {
+                             Sounds.clickSound(); 
+                             buttonReturn();
+                         }} src={arrow} alt="Arrow icon" />
                 
                     <a className="ranking">Ranking</a>
 

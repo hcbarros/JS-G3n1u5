@@ -2,6 +2,7 @@
 import './index.css';
 import React,{useState, useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
+import Sounds from '../../sounds/sounds';
 import loader from '../../images/loader.webp';
 
 
@@ -14,6 +15,7 @@ export default function GameScreen () {
         const [points, setPoints] = useState(0);
         const [showNumber, setShowNumber] = useState(false);
         const [showLoader, setShowLoader] = useState(false);
+        const [disable, setDisable] = useState(false);
         const [count, setCount] = useState(0);
         const [changeNumber, setChangeNumber] = useState(false);
 
@@ -26,7 +28,7 @@ export default function GameScreen () {
                 setRedirect(true);                                
             }
 
-            else if((count+1) >= numbers.length) {
+            else if((count+1) >= numbers.length) {                
                 setPoints(p => p + 1);
                 getLoader();
             }           
@@ -35,7 +37,6 @@ export default function GameScreen () {
                 setCount(c => c + 1);
             }
         }
-  
 
         const sortNumber = () => {
             const sort = Math.floor((Math.random() * 9) + 1);
@@ -48,33 +49,37 @@ export default function GameScreen () {
            
             new Promise((resolve,reject) => {
                 sortNumber();       
+                setDisable(true);
                 setInit(false);
                 setShowNumber(false);     
                 setShowLoader(true);                
                 setTimeout(() => {
                     setNumber(numbers[0]);
                     resolve(setShowLoader(false));
-                    reject("Error: promise rejected!");
+                    reject("Promise game rejected!");
                 }, 1000);                                
             })
             .then(() => setChangeNumber(c => !c))    
-            .catch((error) => console.log(`Error promise: ${error}`));          
+            .catch((error) => console.log(`Error promise game: ${error}`));          
         }
 
         useEffect(() => {                   
              
-            setShowNumber(x => !x);
+            setShowNumber(x => !x);            
+    
             const time = count == 0 ? 0 : 300;
 
             setTimeout(() => {    
 
                 if(!init && showNumber && (count < numbers.length)) {                                        
                     setNumber(numbers[count]);
+                    Sounds.dtmfSound(numbers[count]);
                     setCount(x => x + 1);               
                 }
                 if(count >= numbers.length) {
                     setShowNumber(false);
                     setCount(0);
+                    setDisable(false);
                 }
                 if(!init && count < numbers.length) setChangeNumber(c => !c);                
                 
@@ -98,12 +103,15 @@ export default function GameScreen () {
 
                 <div className="wrapper">
                     {[1,2,3,4,5,6,7,8,9].map((x) => 
-                        <button disabled={showNumber || showLoader} className="btn" 
-                        onClick={() => clickButton(x)}>{x}</button>
+                        <button disabled={disable} className="btn" 
+                        onClick={() => {
+                            Sounds.dtmfSound(x);
+                            clickButton(x);
+                        }}>{x}</button>
                     )}
                 </div>                
 
             </div>
         );
-    
+
 }

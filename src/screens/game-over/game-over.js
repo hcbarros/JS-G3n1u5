@@ -2,7 +2,7 @@
 import './index.css';
 import React,{useState, useEffect, useRef} from 'react';
 import {Redirect} from 'react-router-dom';
-import loader from '../../images/loader.webp';
+import Sounds from '../../sounds/sounds';
 import close from '../../images/close.svg';
 import axios from 'axios';
 
@@ -15,12 +15,14 @@ export default function GameOver() {
         const [init, setInit] = useState(true);
         const [load, setLoad] = useState(false);
         const [points, setPoints] = useState(0);
+        const [alert, setAlert] = useState(false);
         const input = useRef(null);
 
         const buttonSend = async () => {            
 
             if(!/\S/.test(input.current.value)) {
-                alert("O nome deve conter algum valor!")
+                input.current.value = "";
+                setAlert(true);
                 return;
             }
 
@@ -40,10 +42,14 @@ export default function GameOver() {
         }
 
         const buttonClose = () => {        
-                
+               
                 setHideScreen(true);
                 setTimeout(() => setGoHome(true), 400);                                
         }
+
+
+        const handleKeyPress = (event) => setAlert(false);
+                  
 
         useEffect(() => {   
             
@@ -52,7 +58,7 @@ export default function GameOver() {
             new Promise((resolve,reject) => {           
                 setTimeout(() => {                    
                     resolve(setLoad(true));
-                    reject("Error: promise rejected!");
+                    reject("Promise game over rejected!");
                 }, 1000);                                
             })
             .then(() => setTimeout(() => {
@@ -60,7 +66,7 @@ export default function GameOver() {
                             setInit(false);
                         },1000)
             )    
-            .catch((error) => console.log(`Error promise: ${error}`));          
+            .catch((error) => console.log(`Error game over: ${error}`));          
                                                         
         },[]);
 
@@ -72,7 +78,11 @@ export default function GameOver() {
                 {goHome && <Redirect to="/" />}  
                 {goScore && <Redirect to="/score" />}
 
-                <img onClick={buttonClose} className="animation btnClose" src={close} alt="ranking image" />
+                <img onClick={() => {
+                        Sounds.clickSound(); 
+                        buttonClose();
+                     }} 
+                className="animation btnClose" src={close} alt="ranking image" />
 
                 <a className="end-game-text animation">Fim do Jogo</a>
 
@@ -82,10 +92,14 @@ export default function GameOver() {
 
                 <a className={init ? "hide" : "animation score-value"}>{points}</a>
 
-                <input className={init ? "hide" : "animation"} ref={input} type="text" placeholder="Digite seu nome"/>
+                <input className={init ? "hide" : (alert ? "animation alert" : "animation")} 
+                       ref={input} onKeyPress={handleKeyPress} type="text" placeholder="Digite seu nome"/>
 
                 <button className={init ? "hide" : "animation"}
-                        onClick={buttonSend}>Salvar Ranking</button>
+                        onClick={() => {
+                            Sounds.clickSound(); 
+                            buttonSend();
+                        }} >Salvar Ranking</button>
             
             </div>
         );

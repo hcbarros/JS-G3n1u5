@@ -2,6 +2,7 @@
 import './index.css';
 import React,{useState} from 'react';
 import {Redirect} from 'react-router-dom';
+import Sounds from '../../sounds/sounds';
 import logo from '../../images/logo.svg';
 import ranking from '../../images/ranking.svg';
 
@@ -20,12 +21,18 @@ const Home = () => {
                 {goToScore && <Redirect to="/score" />}
 
                 <img className="img-ranking" src={ranking} alt="ranking image" 
-                     onClick={() => setGoToScore(true)} />
+                     onClick={() => {
+                         Sounds.clickSound(); 
+                         setGoToScore(true);
+                     }} />
 
                 <img src={logo} alt="Logo image" />
 
-                <button onClick={() => setGoToGame(true)} >Iniciar Jogo</button>
-
+                <button onClick={() => {
+                            Sounds.clickSound(); 
+                            setGoToGame(true);
+                        }} >Iniciar Jogo</button>
+                        
             </div>
         );
     
