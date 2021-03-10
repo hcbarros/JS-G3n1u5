@@ -14,13 +14,13 @@ const Home = () => {
 
         return (
 
-            <div className="main-home">           
+            <div data-testid="mainHome" className="main-home">           
 
                 {goToGame && <Redirect to="/game-screen" />}
 
                 {goToScore && <Redirect to="/score" />}
 
-                <img className="img-ranking" src={ranking} alt="ranking image" 
+                <img data-testid="imgRanking" className="img-ranking" src={ranking} alt="ranking image" 
                      onClick={() => {
                          Sounds.clickSound(); 
                          setGoToScore(true);

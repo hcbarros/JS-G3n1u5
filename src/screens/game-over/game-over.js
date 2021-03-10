@@ -7,7 +7,7 @@ import close from '../../images/close.svg';
 import axios from 'axios';
 
 
-export default function GameOver() {
+export default function GameOver(props) {
     
         const [hideScreen, setHideScreen] = useState(false);
         const [goHome, setGoHome] = useState(false);
@@ -18,10 +18,11 @@ export default function GameOver() {
         const [alert, setAlert] = useState(false);
         const input = useRef(null);
 
-        const buttonSend = async () => {            
+        const buttonSend = () => {            
 
             if(!/\S/.test(input.current.value)) {
                 input.current.value = "";
+                Sounds.errorSound();
                 setAlert(true);
                 return;
             }
@@ -46,14 +47,12 @@ export default function GameOver() {
                 setHideScreen(true);
                 setTimeout(() => setGoHome(true), 400);                                
         }
-
-
-        const handleKeyPress = (event) => setAlert(false);
                   
 
         useEffect(() => {   
             
-            setPoints(parseInt(localStorage.getItem("points")));
+            setPoints(parseInt(props.location.state.points));
+            Sounds.failSound();
 
             new Promise((resolve,reject) => {           
                 setTimeout(() => {                    
@@ -93,7 +92,8 @@ export default function GameOver() {
                 <a className={init ? "hide" : "animation score-value"}>{points}</a>
 
                 <input className={init ? "hide" : (alert ? "animation alert" : "animation")} 
-                       ref={input} onKeyPress={handleKeyPress} type="text" placeholder="Digite seu nome"/>
+                       ref={input} onFocus={() => setAlert(false)} 
+                       type="text" placeholder="Digite seu nome"/>
 
                 <button className={init ? "hide" : "animation"}
                         onClick={() => {

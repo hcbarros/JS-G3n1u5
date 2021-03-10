@@ -16,7 +16,7 @@ ReactDOM.render(
         <Switch>
             <Route path="/" exact={true} component={Home} />
             <Route path="/game-screen" component={GameScreen} />
-            <Route path="/game-over" component={GameOver} />
+            <Route path="/game-over" render={(props) => <GameOver {...props}/>}/>
             <Route path="/score" component={ScoreScreen} />
         </Switch>  
      </BrowserRouter>   

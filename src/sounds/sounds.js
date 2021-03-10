@@ -1,6 +1,8 @@
 
 import * as Tone from 'tone';
 import audioClick from './sound-files/click2.mp3';
+import error from './sound-files/error_sound.mp3';
+import fail from './sound-files/fail_sound.mp3';
 
 
 export default class Sounds {
@@ -22,4 +24,22 @@ export default class Sounds {
             player.start();
         });    
     }
+
+    static errorSound() {
+
+        const player = new Tone.Player(error).toDestination();
+        Tone.loaded().then(() => {
+            player.start();
+        });    
+    }
+
+    static failSound() {
+
+        const player = new Tone.Player(fail).toDestination();
+        Tone.loaded().then(() => {
+            player.start();
+        });    
+    }
+
+    
 }

@@ -23,8 +23,6 @@ export default function GameScreen () {
         const clickButton = (n) => {
 
             if(numbers[count] != n) {                
-
-                localStorage.setItem("points", points);
                 setRedirect(true);                                
             }
 
@@ -92,9 +90,16 @@ export default function GameScreen () {
 
         return (
 
-            <div className="main-game">           
+            <div data-testid="test-game" className="main-game">           
 
-                {redirect && <Redirect to="/game-over" />}
+                {redirect && 
+                    <Redirect to={
+                        {
+                            pathname:'/game-over', 
+                            state: {points: points}
+                        }
+                    } />
+                }
                 
                 <div className="shower">
                     <img className={!showLoader ? "hide" : ""} src={loader} alt="image loader" />
@@ -103,7 +108,7 @@ export default function GameScreen () {
 
                 <div className="wrapper">
                     {[1,2,3,4,5,6,7,8,9].map((x) => 
-                        <button disabled={disable} className="btn" 
+                        <button key={x} disabled={disable} className="btn" 
                         onClick={() => {
                             Sounds.dtmfSound(x);
                             clickButton(x);

@@ -59,7 +59,7 @@
     border-right: 3px solid #1F6F8B;
 }
 
-.btn:active {
+.btn:active, .clip {
    font-size: 80px;
   -webkit-background-clip: text;
   -moz-background-clip: text;
