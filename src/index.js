@@ -8,7 +8,6 @@ import Home from './screens/home/home';
 import GameScreen from './screens/game-screen/game-screen';
 import GameOver from './screens/game-over/game-over';
 import ScoreScreen from './screens/score-screen/score-screen';
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,4 +23,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals();
