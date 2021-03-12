@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# JS G3n1u5
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### servidor => https://js-g3n1u5.herokuapp.com/
 
-## Available Scripts
+O JS G3n1u5 é um jogo de memorização. Nesse jogo uma sequência de números é exibida para o jogador,
+que precisa memorizar e repetir essa sequência corretamente usando o teclado na tela do jogo. Toda vez
+que o jogador acertar a sequência inteira ele soma um ponto e uma nova rodada se inicia. A cada nova
+rodada a sequência anterior é acrescida de um novo número de modo que a sequência vai ficando cada vez
+maior e mais difícil de memorizar. Se o jogador errar algum número da sequência o jogo acaba e a
+pontuação final é mostrada. O jogador poderá salvar sua pontuação no ranking do jogo.
 
-In the project directory, you can run:
+## Regras
+- A sequência começa com apenas um número;
+- A cada rodada a sequência anterior é repetida e um número aleatório é adicionado ao final da
+sequência;
+- O mostrador exibe um número por vez e cada número fica visível por 300 milissegundos;
+- O jogador precisa memorizar toda a sequência e repetir-la corretamente usando o teclado na tela do
+jogo;
+- Se o jogador repetir a sequência corretamente ele soma um ponto e uma nova rodada se inicia;
+- Se o jogador errar qualquer número da sequência o jogo acaba;
 
-### `yarn start`
+## Funcionalidades
+- O jogador poderá ver a tela de ranking clicando no ícone do canto superior direito da tela inicial do
+jogo;
+- O jogo começa quando o jogador clicar no botão “Iniciar Jogo”;
+- Ao final do jogo, o jogador poderá salvar sua pontuação no ranking digitando seu nome e clicando no
+botão “Salvar Ranking”;
+- Caso não deseje salvar sua pontuação, o jogador poderá voltar para a tela inicial do jogo clicando no
+botão do canto superior direito da tela final do jogo;
+- Depois de salvar sua pontuação, a tela de ranking deve ser exibida para o jogador com a lista de
+ranking atualizada;
+- Ao clicar no botão do canto superior esquerdo da tela de ranking o jogador voltará para a tela inicial
+do jogo;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A interface foi criada com HTML e CSS, com a responsividade para tamanhos de tela diferentes.
+A programação do jogo foi feita com JavaScript, atendendo as funcionalidades apresentadas.
+Foi utilizada a biblioteca React.
 
-### `yarn test`
+## Ranking
+Para obter a lista do ranking uma requisição é enviada para:
+- endereço: https://us-central1-prova-front-letras.cloudfunctions.net/ranking
+- método: GET
+Para salvar um score no ranking uma requisição é enviada para:
+- endereço: https://us-central1-prova-front-letras.cloudfunctions.net/save
+- método: POST
+- corpo: {name: <Nome | String>, score: <Score | Number>}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para instalar o módulos: npm install ou yarn install
+Para executar a aplicação: npm start
